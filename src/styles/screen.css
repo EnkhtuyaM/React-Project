@@ -1,5 +1,5 @@
 .screen {
-  width: 400px;
+  width: 300px;
   height: 60px;
   background-color: aqua;
   border: 1px solid grey;
@@ -7,6 +7,6 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  /* align-items: center; */
   padding-right: 10px;
 }
