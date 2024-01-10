@@ -1,21 +1,57 @@
+import { useState } from "react";
 import Button from "./components/Button";
-import "./styles/global.css"
+import ButtonOp from "./components/ButtonOp";
+import Screen from "./components/Screen";
+import "./styles/global.css";
+import { numberButtons, operatorButtons } from "./utils/constants";
 
-// export default function App (){
-//   return (
-//     <div>
-//       <Button/>
-//       {/* <Button value="-" />
-//       <Button value="1" /> */}
-      
-//     </div>
-//   )
-// }
+export default function App() {
+  const [currentScreen, setCurrentScreen] = useState("");
+  const [prevScreen, setPrevScreen] = useState("");
+  const [todoOp, setTodoOp] = useState("");
 
-function App() {
+  function changeTodoOp(val) {
+    setTodoOp(val);
+    setPrevScreen(currentScreen);
+    setCurrentScreen("");
+  }
+  function equalHandler() {
+    if (todoOp == "+") {
+      const result = Number(prevScreen) + Number(currentScreen) + "";
+      setCurrentScreen(result);
+    }
+  }
+  function changeScreenVal(val) {
+    setCurrentScreen(currentScreen + val);
+  }
   return (
-    <div>
-      <p>Hello World</p>
+    <div className="mainCalc">
+      <Screen value={currentScreen} />
+      <div className="buttons">
+        <div className="numbers">
+          {numberButtons.map((val, index) => {
+            return (
+              <Button
+                key={index}
+                value={val}
+                changeScreenVal={changeScreenVal}
+              />
+            );
+          })}
+        </div>
+        <div className="operators">
+          {operatorButtons.map((val, index) => {
+            return (
+              <ButtonOp key={index} value={val} changeTodoOp={changeTodoOp} />
+            );
+          })}
+        </div>
+        <div>
+          <button className="btn" onClick={equalHandler}>
+            =
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -37,19 +73,19 @@ function App() {
 // export default function App() {
 //   const [count, setCount] = useState(-1);
 
-  // function incrementHandler() {
-  //   setCount(count + 1);
-  // }
-  // function decrementHandler() {
-  //   setCount(count - 1);
-  // }
-  // console.log(count);
+// function incrementHandler() {
+//   setCount(count + 1);
+// }
+// function decrementHandler() {
+//   setCount(count - 1);
+// }
+// console.log(count);
 //   let buttonValues = ["-", "+", "1"];
 //   return (
 //     <div>
-      // <Button value="+" />
-      // <Button value="-" />
-      // <Button value="1" />
+// <Button value="+" />
+// <Button value="-" />
+// <Button value="1" />
 //     </div>
 //   );
 // }

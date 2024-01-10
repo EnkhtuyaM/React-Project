@@ -1,5 +1,27 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.mainCalc {
+  width: 400px;
+  margin: auto;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.buttons {
+  display: flex;
+}
+.operators button {
+  background-color: orange;
+}
+.numbers button {
+  background-color: grey;
 }
